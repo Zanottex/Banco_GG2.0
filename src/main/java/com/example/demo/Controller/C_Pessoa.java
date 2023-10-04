@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -24,30 +25,28 @@ public class C_Pessoa {
                                   @RequestParam("email") String email,
                                   @RequestParam("telefone") String telefone,
                                   @RequestParam("data_nasc") String data_nasc,
-                                  @RequestParam("senha") String senha,
-                                  @RequestParam("confsenha") String confsenha
+                                  @RequestParam("senha") String senha
     ){
-        return S_Pessoa.cadastrarPessoa(nome, cpf, email, telefone, data_nasc, senha, confsenha);
+        return S_Pessoa.cadastrarPessoa(nome, cpf, email, telefone, data_nasc, senha);
     }
 
     @GetMapping("/")
     public String getLogin(){
-        return "Login/Login";
+        return "Cadastrar/Usuario";
     }
 
     @PostMapping("/")
-    public String setLogin(@RequestParam("cpf") String cpf,
-                           @RequestParam("senha") String senha,
-                           HttpSession session,
-                           RedirectAttributes redirectAttributes){
-        M_Pessoa pessoa = new M_Pessoa();
-        session.setAttribute("usuario", pessoa);
-        if(session.getAttribute("usuario") == null){
-            return "Login/Login";
+    @ResponseBody
+    public boolean PostLogin(@RequestParam("cpf") String cpf,
+                             @RequestParam("senha") String senha,
+                             HttpSession session){
+        session.setAttribute("usuario",S_Pessoa.getPessoaLogin(cpf, senha));
+        if(session.getAttribute("usuario")== null){
+            return false;
         }else{
-            redirectAttributes.addFlashAttribute("nome", pessoa.getNome());
-            return "redirect:/Home";
+            return true;
         }
+
     }
 
     @ModelAttribute("usuario")

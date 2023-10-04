@@ -3,7 +3,10 @@ package com.example.demo.Model;
 
 import jakarta.persistence.*;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
+
+import org.springframework.format.number.money.MonetaryAmountFormatter;
 
 @Entity
 @Table(name = "pessoa")
@@ -14,9 +17,18 @@ public class M_Pessoa {
     private String nome;
     private String email;
     private Long cpf;
-    private LocalDate data_nasc;
+    private LocalDate datanasc;
     private Long telefone;
     private String senha;
+    private String dinheiro;
+
+    public String getDinheiro(){
+        return dinheiro;
+    }
+
+    public void setDinheiro(String dinheiro){
+        this.dinheiro = dinheiro;
+    }
 
     public Long getId() {
         return id;
@@ -51,11 +63,11 @@ public class M_Pessoa {
     }
 
     public LocalDate getData_nasc() {
-        return data_nasc;
+        return datanasc;
     }
 
-    public void setData_nasc(LocalDate data_nasc) {
-        this.data_nasc = data_nasc;
+    public void setData_nasc(LocalDate datanasc) {
+        this.datanasc = datanasc;
     }
 
     public Long getTelefone() {
