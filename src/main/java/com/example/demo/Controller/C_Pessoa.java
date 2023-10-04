@@ -14,25 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class C_Pessoa {
-    @GetMapping("/Cadastro")
-    public String getCadastro(){
-        return "Cadastro/Cadastro";
-    }
-
-    @PostMapping("/Cadastro")
-    public M_Resposta setCadastro(@RequestParam("nome") String nome,
-                                  @RequestParam("cpf") String cpf,
-                                  @RequestParam("email") String email,
-                                  @RequestParam("telefone") String telefone,
-                                  @RequestParam("data_nasc") String data_nasc,
-                                  @RequestParam("senha") String senha
-    ){
-        return S_Pessoa.cadastrarPessoa(nome, cpf, email, telefone, data_nasc, senha);
-    }
-
     @GetMapping("/")
-    public String getLogin(){
-        return "Cadastrar/Usuario";
+    public String getCadastro(){
+        return "Logar/usuario";
     }
 
     @PostMapping("/")
@@ -49,6 +33,16 @@ public class C_Pessoa {
 
     }
 
+    @ResponseBody
+    public M_Resposta setCadastro(@RequestParam("nome") String nome,
+                                  @RequestParam("cpf") String cpf,
+                                  @RequestParam("email") String email,
+                                  @RequestParam("telefone") String telefone,
+                                  @RequestParam("datanasc") String datanasc,
+                                  @RequestParam("senha") String senha
+    ){
+        return S_Pessoa.cadastrarPessoa(nome, cpf, email, telefone, datanasc, senha);
+    }
     @ModelAttribute("usuario")
     public M_Pessoa getUsuario(HttpSession session) {
         return (M_Pessoa) session.getAttribute("usuario");

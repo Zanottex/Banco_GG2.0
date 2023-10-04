@@ -27,7 +27,6 @@ public class S_Pessoa {
     }
 
     public static M_Resposta cadastrarPessoa(String nome, String cpf, String email, String telefone, String datanasc, String senha) {
-
         boolean cadastrovalido = true;
         String mensagemRetorno = "";
         telefone = S_NumberCleaner.cleanerNumber(telefone);

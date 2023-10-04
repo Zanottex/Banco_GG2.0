@@ -48,6 +48,7 @@ function validaEnvio() {
     let datanasc = $("#datanasc").val();
     let telefone = $("#telefone").val();
     let senha = $("#senha").val();
+    let dinheiro = 0;
     let mensagem = "";
 
     if (validaCampoVazio(nome)) {
@@ -82,8 +83,10 @@ function validaEnvio() {
                 senha: senha,
                 datanasc: datanasc,
                 telefone: telefone,
+                dinheiro: dinheiro,
             },
             success: function (data) {
+
                 alert("Deu bom, Faça seu login!");
             },
             error: function () {
