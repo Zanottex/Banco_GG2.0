@@ -20,13 +20,13 @@ public class M_Pessoa {
     private LocalDate datanasc;
     private Long telefone;
     private String senha;
-    private Long dinheiro = Long.valueOf(0);
+    private double dinheiro = 0;
 
-    public Long getDinheiro(){
+    public double getDinheiro(){
         return dinheiro;
     }
 
-    public void setDinheiro(long dinheiro){
+    public void setDinheiro(double dinheiro){
         this.dinheiro = dinheiro;
     }
 

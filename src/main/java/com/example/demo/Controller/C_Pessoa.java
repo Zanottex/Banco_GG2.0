@@ -33,6 +33,7 @@ public class C_Pessoa {
 
     }
 
+    @PostMapping("/Cadastrar")
     @ResponseBody
     public M_Resposta setCadastro(@RequestParam("nome") String nome,
                                   @RequestParam("cpf") String cpf,

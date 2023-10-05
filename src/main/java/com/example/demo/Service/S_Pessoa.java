@@ -34,15 +34,15 @@ public class S_Pessoa {
             telefone = null;
         }
         if (!S_CpfValidator.validateCPF(cpf)) {
-            mensagemRetorno += "CPF inválido.<br/>";
+            mensagemRetorno += "CPF inválido.";
             cadastrovalido = false;
         }
         if (nome == null || nome.trim() == "") {
-            mensagemRetorno += "Deve ser informado um nome.<br/>";
+            mensagemRetorno += "Deve ser informado um nome.";
             cadastrovalido = false;
         }
         if ((email == null || email.trim() == "") && telefone == null) {
-            mensagemRetorno += "E-mail e/ou telefone precisa ser informado.<br/>";
+            mensagemRetorno += "E-mail e/ou telefone precisa ser informado.";
             cadastrovalido = false;
         }
         if (cadastrovalido) {

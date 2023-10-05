@@ -48,7 +48,6 @@ function validaEnvio() {
     let datanasc = $("#datanasc").val();
     let telefone = $("#telefone").val();
     let senha = $("#senha").val();
-    let dinheiro = 0;
     let mensagem = "";
 
     if (validaCampoVazio(nome)) {
@@ -75,7 +74,7 @@ function validaEnvio() {
     if (podeEnviar) {
         $.ajax({
             type: "POST",
-            url: "/",
+            url: "/Cadastrar",
             data: {
                 nome: nome,
                 cpf: cpf,
@@ -83,11 +82,13 @@ function validaEnvio() {
                 senha: senha,
                 datanasc: datanasc,
                 telefone: telefone,
-                dinheiro: dinheiro,
             },
             success: function (data) {
-
-                alert("Deu bom, Faça seu login!");
+                if(data.sucesso){
+                    alert("Deu bom, Faça seu login!");
+                }else{
+                    alert(data.mensagem);
+                }
             },
             error: function () {
                 alert("Deu muito ruim parça!");
